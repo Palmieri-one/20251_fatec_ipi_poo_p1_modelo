@@ -9,22 +9,36 @@ public class JogoMinecraft{
     while(true){
         var oQueFazer = 1 + gerador.nextInt(acoes); //nextdouble (if oQueFazer < 0.25)
         var verificarDano = gerador.nextDouble();
+        var ataque = gerador.nextDouble();
             if (p1.estaVivo() == true){
             switch (oQueFazer){
                 case 1:
                     p1.minerar();
+                    System.out.println(p1);
                     break;
                 case 2:
                     p1.coletarMadeira();
+                    System.out.println(p1);
                     break;
                 case 3:
                     p1.construir();
+                    System.out.println(p1);
                     break;
                 }
                 if (verificarDano <= 0.25){
+                    System.out.println("=====================");
                     p1.levarDano();
+                    System.out.println(p1);
                 }
-                System.out.println(p1);
+                if(p2.estaVivo()){
+                    if(ataque <= 0.5){
+                        System.out.println("=====================");
+                        System.out.println("Alex atacou Steve Construtor");
+                        p2.levarDano();
+                        System.out.println(p2);
+                    }
+                }
+                
                 System.out.println("=====================");
                 
             }
@@ -33,17 +47,29 @@ public class JogoMinecraft{
                     var verificarDanoSteve = gerador.nextDouble();
                     if (oQueFazerSteve <=0.6){
                         p2.construir();
+                        System.out.println(p2);
                     }
                     if (oQueFazerSteve > 0.6 && oQueFazerSteve <= 0.9){
-                    p2.coletarMadeira();
+                        p2.coletarMadeira();
+                        System.out.println(p2);
                     }
                     if(oQueFazerSteve > 0.9 && oQueFazerSteve <= 1){
                         p2.minerar();
+                        System.out.println(p2);
                     }
                     if (verificarDanoSteve <= 0.25){
+                        System.out.println("=====================");
                         p2.levarDano();
+                        System.out.println(p2);
                     }
-                    System.out.println(p2);
+                    if(p1.estaVivo ()){
+                        if(ataque > 0.5){
+                            System.out.println("=====================");
+                            System.out.println("Steve Construtor atacou Alex");
+                            p1.levarDano();
+                            System.out.println(p1);
+                        }
+                    }
                     System.out.println("=====================");
                     
                 }
@@ -52,7 +78,7 @@ public class JogoMinecraft{
                     System.out.println("GAME OVER");
                     break;
                 }                
-           Thread.sleep(5000);   
+           Thread.sleep(500);   
         }
     }     
 }     
