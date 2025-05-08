@@ -6,7 +6,8 @@ public class JogoMinecraft{
     int acoes = 3;
     var gerador = new Random();
     while(true){
-        var oQueFazer = 1 + gerador.nextInt(acoes);
+        var oQueFazer = 1 + gerador.nextInt(acoes); //nextdouble (if oQueFazer < 0.25)
+        var verificarDano = gerador.nextDouble();
             switch (oQueFazer){
                 case 1:
                     p1.minerar();
@@ -18,10 +19,17 @@ public class JogoMinecraft{
                     p1.construir();
                     break;
                 }
+                if (verificarDano <= 0.25){
+                    p1.levarDano();
+                }
                 System.out.println(p1);
                 System.out.println("=====================");
                 Thread.sleep(5000);
-            }
-            
+                if (p1.estaVivo() == false ){
+                System.out.println("GAME OVER");
+                System.out.println("=====================");
+                System.exit(1);
+                }
+            }        
     }
 }
