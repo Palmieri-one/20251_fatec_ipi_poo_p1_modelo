@@ -14,7 +14,7 @@ public class JogadorMinecraft {
     }
 
     public void minerar() {
-        System.out.println(nome + " está minerando...");
+        System.out.println(nome + " esta minerando...");
         blocosColetados++;
         inventario.add("Pedra");
     }
@@ -30,7 +30,7 @@ public class JogadorMinecraft {
             inventario.remove(0);
             inventario.remove(0);
         } else {
-            System.out.println(nome + " não tem blocos suficientes para construir.");
+            System.out.println(nome + " nao tem blocos suficientes para construir.");
         }
     }
 
