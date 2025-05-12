@@ -33,8 +33,7 @@ public class JogoMinecraft{
                 if(p2.estaVivo()){
                     if(ataque <= 0.5){
                         System.out.println("=====================");
-                        System.out.println("Alex atacou Steve Construtor");
-                        p2.levarDano();
+                        p1.atacar(p2);
                         System.out.println(p2);
                     }
                 }
@@ -65,8 +64,7 @@ public class JogoMinecraft{
                     if(p1.estaVivo ()){
                         if(ataque > 0.5){
                             System.out.println("=====================");
-                            System.out.println("Steve Construtor atacou Alex");
-                            p1.levarDano();
+                            p2.atacar(p1);
                             System.out.println(p1);
                         }
                     }
@@ -78,7 +76,7 @@ public class JogoMinecraft{
                     System.out.println("GAME OVER");
                     break;
                 }                
-           Thread.sleep(500);   
+           Thread.sleep(5000);   
         }
     }     
 }     

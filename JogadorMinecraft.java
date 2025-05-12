@@ -39,6 +39,11 @@ public class JogadorMinecraft {
         System.out.println(nome + " levou dano! Vida atual: " + vida);
     }
 
+    public void atacar(JogadorMinecraft j){
+        System.out.println(nome + " atacou "); 
+        j.levarDano();
+    }
+
     public boolean estaVivo() {
         return vida > 0;
     }
