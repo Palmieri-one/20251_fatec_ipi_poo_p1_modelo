@@ -1,12 +1,13 @@
+package br.fatec;
 import java.util.*;
 
-public class JogadorMinecraft {
+public class JogadorMinecraft_Teste {
     private String nome;
     private int vida;
     private int blocosColetados;
     private List<String> inventario;
 
-    public JogadorMinecraft(String nome) {
+    public JogadorMinecraft_Teste(String nome) {
         this.nome = nome;
         this.vida = 10;
         this.blocosColetados = 0;
@@ -39,7 +40,7 @@ public class JogadorMinecraft {
         System.out.println(nome + " levou dano! Vida atual: " + vida);
     }
 
-    public void atacar(JogadorMinecraft j){
+    public void atacar(JogadorMinecraft_Teste j){
         System.out.println(nome + " atacou "); 
         j.levarDano();
     }

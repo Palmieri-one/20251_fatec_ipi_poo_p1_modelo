@@ -1,13 +1,14 @@
+package br.fatec;
 import java.util.Random;
 
-public class JogoMinecraft{
+public class JogoMinecraft_Teste{
     public static void main(String[] args) throws Exception {
-    var p1 = new JogadorMinecraft("Alex");
-    var p2 = new JogadorMinecraft("Steve Construtor");
+    var p1 = new JogadorMinecraft_Teste("Alex");
+    var p2 = new JogadorMinecraft_Teste("Steve Construtor");
     int acoes = 3;
     var gerador = new Random();
     while(true){
-        var oQueFazer = 1 + gerador.nextInt(acoes); //nextdouble (if oQueFazer < 0.25)
+        var oQueFazer = 1 + gerador.nextInt(acoes); 
         var verificarDano = gerador.nextDouble();
         var ataque = gerador.nextDouble();
             if (p1.estaVivo() == true){
