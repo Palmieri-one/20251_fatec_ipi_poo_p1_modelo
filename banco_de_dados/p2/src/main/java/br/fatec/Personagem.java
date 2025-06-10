@@ -62,7 +62,7 @@ public void levarDano() {
     System.out.println(nome + " levou dano! Vida atual: " + vida);
 }
 
-public void atacar(JogadorMinecraft_Teste j){
+public void atacar(Personagem j){
     System.out.println(nome + " atacou "); 
     j.levarDano();
 }

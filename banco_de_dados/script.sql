@@ -1,4 +1,6 @@
--- Active: 1747938969054@@127.0.0.1@5432@db_personagens
+Active: 17495715422316@@127.0.0.1@5432@bd_personagens
+
+
 
 -- INSERT INTO tb_personagem(nome, prob_construir, prob_coletar, prob_mineirar, vitorias, derrotas)
 -- VALUES
