@@ -28,5 +28,17 @@ public class PersonagemDAO {
                 return personagens;
         }
 }
+
+    public void atualizarVitoriasDerrotas(int codigo, int vitorias, int derrotas) throws Exception {
+    String sql = "UPDATE tb_personagem SET vitorias=?, derrotas=? WHERE cod_personagem=?";
+    try (Connection conexao = ConnectionFactory.obterConexao();
+         PreparedStatement ps = conexao.prepareStatement(sql)) {
+        ps.setInt(1, vitorias);
+        ps.setInt(2, derrotas);
+        ps.setInt(3, codigo);
+        ps.executeUpdate();
+    }
 }
+}
+
     

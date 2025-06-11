@@ -43,6 +43,15 @@ public class JogoMinecraft {
                         System.out.println("=====================");
                         p1.atacar(p2);
                         System.out.println(p2);
+                        if(!p2.estaVivo()){
+                            p1.setVitorias(p1.getVitorias() + 1);
+                            p2.setDerrotas(p2.getDerrotas() + 1);
+                            dao.atualizarVitoriasDerrotas(p1.getCodigo(), p1.getVitorias(), p1.getDerrotas());
+                            dao.atualizarVitoriasDerrotas(p2.getCodigo(), p2.getVitorias(), p2.getDerrotas());
+                            System.out.println("VITÓRIA DE " + p1.getNome() + "!");
+                            System.out.println(p1);
+                                System.out.println(p2);
+                        }
                     }
                 }
             }
@@ -76,7 +85,15 @@ public class JogoMinecraft {
                         if(ataque > 0.5){
                             System.out.println("=====================");
                             p2.atacar(p1);
-                            System.out.println(p1);
+                            if(!p1.estaVivo()){
+                                p2.setVitorias(p2.getVitorias() + 1);
+                                p1.setDerrotas(p1.getDerrotas() + 1);
+                                dao.atualizarVitoriasDerrotas(p2.getCodigo(), p2.getVitorias(), p2.getDerrotas());
+                                dao.atualizarVitoriasDerrotas(p1.getCodigo(), p1.getVitorias(), p1.getDerrotas());
+                                System.out.println("VITÓRIA DE " + p2.getNome() + "!");
+                                System.out.println(p1);
+                                System.out.println(p2);
+                            }
                         }
                     }
                     System.out.println("=====================");
@@ -86,7 +103,7 @@ public class JogoMinecraft {
                     System.out.println("GAME OVER");
                     break;
                 }                
-        Thread.sleep(5000);  
+        Thread.sleep(500);  
         }
     }
 }
