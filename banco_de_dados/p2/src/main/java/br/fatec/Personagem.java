@@ -1,6 +1,7 @@
 package br.fatec;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -71,11 +72,17 @@ public boolean estaVivo() {
     return vida > 0;
 }
 
+public void alterarProbabilidades(Random gerador) {
+    this.setProb_construir(gerador.nextDouble());
+    this.setProb_coletar(gerador.nextDouble());
+    this.setProb_minerar(gerador.nextDouble());
+}
+
 @Override
 public String toString() {
     return String.format(
-        "%s - Vida: %d, Blocos: %d, Inventário: %s, Vitorias: %d, Derrotas: %d",
-        nome, vida, blocosColetados, inventario, vitorias, derrotas
+        "%s - Vida: %d, Blocos: %d, Inventário: %s, Vitorias: %d, Derrotas: %d, Construir: %.2f, Coletar: %.2f, Minerar: %.2f",
+        nome, vida, blocosColetados, inventario, vitorias, derrotas, prob_construir, prob_coletar, prob_minerar
     );
 }
 }

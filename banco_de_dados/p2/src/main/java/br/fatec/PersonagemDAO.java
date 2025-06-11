@@ -32,13 +32,27 @@ public class PersonagemDAO {
     public void atualizarVitoriasDerrotas(int codigo, int vitorias, int derrotas) throws Exception {
     String sql = "UPDATE tb_personagem SET vitorias=?, derrotas=? WHERE cod_personagem=?";
     try (Connection conexao = ConnectionFactory.obterConexao();
-         PreparedStatement ps = conexao.prepareStatement(sql)) {
+         PreparedStatement ps = conexao.prepareStatement(sql)
+        ){
         ps.setInt(1, vitorias);
         ps.setInt(2, derrotas);
         ps.setInt(3, codigo);
         ps.executeUpdate();
     }
 }
+
+    public void atualizarProbabilidades(int codigo, double probConstruir, double probColetar, double probMinerar) throws Exception {
+        var sql = "UPDATE tb_personagem SET prob_construir=?, prob_coletar=?, prob_mineirar=? WHERE cod_personagem=?";
+        try(var conexao = ConnectionFactory.obterConexao();
+            var ps = conexao.prepareStatement(sql)
+        ){
+            ps.setDouble(1, probConstruir);
+            ps.setDouble(2, probColetar);
+            ps.setDouble(3, probMinerar);
+            ps.setInt(4, codigo);
+            ps.executeUpdate();      
+            }
+    }
 }
 
     

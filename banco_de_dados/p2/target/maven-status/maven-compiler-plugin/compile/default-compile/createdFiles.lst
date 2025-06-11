@@ -1,7 +1,5 @@
-br\fatec\JogoMinecraft_Teste.class
+br\fatec\ConnectionFactory.class
+br\fatec\Personagem.class
 br\fatec\PersonagemDAO.class
 br\fatec\App.class
 br\fatec\JogoMinecraft.class
-br\fatec\ConnectionFactory.class
-br\fatec\Personagem.class
-br\fatec\JogadorMinecraft_Teste.class

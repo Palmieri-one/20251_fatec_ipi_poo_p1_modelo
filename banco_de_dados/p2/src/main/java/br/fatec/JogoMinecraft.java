@@ -10,8 +10,10 @@ public class JogoMinecraft {
         var p2 = lista_p1.get(1);
 
         var gerador = new Random();
+        int iteracao = 1;
 
         while(true){
+            System.out.println("RODADA " + iteracao);
             var ataque = gerador.nextDouble();
 
             if (p1.estaVivo() == true){
@@ -38,7 +40,7 @@ public class JogoMinecraft {
                     System.out.println(p1);
                 }
 
-                if(p2.estaVivo()){
+                if(p1.estaVivo() && p2.estaVivo()){
                     if(ataque <= 0.5){
                         System.out.println("=====================");
                         p1.atacar(p2);
@@ -81,7 +83,7 @@ public class JogoMinecraft {
                         p2.levarDano();
                         System.out.println(p2);
                     }
-                    if(p1.estaVivo ()){
+                    if(p2.estaVivo() && p1.estaVivo()){
                         if(ataque > 0.5){
                             System.out.println("=====================");
                             p2.atacar(p1);
@@ -102,8 +104,16 @@ public class JogoMinecraft {
                 if(p1.estaVivo() == false && p2.estaVivo() == false){
                     System.out.println("GAME OVER");
                     break;
-                }                
-        Thread.sleep(500);  
+                }          
+
+                if(iteracao >= 1){
+                p1.alterarProbabilidades(gerador);
+                p2.alterarProbabilidades(gerador);
+                dao.atualizarProbabilidades(p1.getCodigo(), p1.getProb_construir(), p1.getProb_coletar(), p1.getProb_minerar());
+                dao.atualizarProbabilidades(p2.getCodigo(), p2.getProb_construir(), p2.getProb_coletar(), p2.getProb_minerar());
+            }
+            iteracao++;      
+            Thread.sleep(500);  
         }
     }
 }
