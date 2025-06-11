@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 
 public class ConnectionFactory {
     private static String host = "localhost";
-    private static String port = "5433";
+    private static String port = "5432";
     private static String db = "db_personagens";
     private static String user = "postgres";
     private static String password = "123456";

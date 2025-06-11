@@ -26,6 +26,7 @@ public class Personagem {
 
 
 public Personagem(int codigo, String nome, Double prob_construir, Double prob_coletar, Double prob_mineirar, int vitorias, int derrotas){
+    this.codigo = codigo;
     this.nome = nome;
     this.vida = 10;
     this.blocosColetados = 0;

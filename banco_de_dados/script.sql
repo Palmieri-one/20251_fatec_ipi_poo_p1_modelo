@@ -1,3 +1,4 @@
+
 -- INSERT INTO tb_personagem(nome, prob_construir, prob_coletar, prob_mineirar, vitorias, derrotas)
 -- VALUES
 -- ('Steve', '0.33' , '0.33', '0.33', '0', '0'),

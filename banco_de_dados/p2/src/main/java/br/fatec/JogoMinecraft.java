@@ -52,7 +52,7 @@ public class JogoMinecraft {
                             dao.atualizarVitoriasDerrotas(p2.getCodigo(), p2.getVitorias(), p2.getDerrotas());
                             System.out.println("VITÓRIA DE " + p1.getNome() + "!");
                             System.out.println(p1);
-                                System.out.println(p2);
+                            System.out.println(p2);
                         }
                     }
                 }
@@ -107,13 +107,17 @@ public class JogoMinecraft {
                 }          
 
                 if(iteracao >= 1){
-                p1.alterarProbabilidades(gerador);
-                p2.alterarProbabilidades(gerador);
-                dao.atualizarProbabilidades(p1.getCodigo(), p1.getProb_construir(), p1.getProb_coletar(), p1.getProb_minerar());
-                dao.atualizarProbabilidades(p2.getCodigo(), p2.getProb_construir(), p2.getProb_coletar(), p2.getProb_minerar());
-            }
+                    if(p1.estaVivo()){
+                         p1.alterarProbabilidades(gerador);
+                         dao.atualizarProbabilidades(p1.getCodigo(), p1.getProb_construir(), p1.getProb_coletar(), p1.getProb_minerar());
+                    }
+                    if(p2.estaVivo()){
+                         p2.alterarProbabilidades(gerador);
+                         dao.atualizarProbabilidades(p2.getCodigo(), p2.getProb_construir(), p2.getProb_coletar(), p2.getProb_minerar());
+                    }
+                }
             iteracao++;      
-            Thread.sleep(500);  
+            Thread.sleep(5000);  
         }
     }
 }

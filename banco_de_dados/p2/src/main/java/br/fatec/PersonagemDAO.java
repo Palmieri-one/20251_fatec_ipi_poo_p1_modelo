@@ -13,7 +13,6 @@ public class PersonagemDAO {
             var ps = conexao.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             ){
-                //lidar com o resultado
                 while(rs.next()){
                     var codigo = rs.getInt("cod_personagem");
                     var nome = rs.getString("nome");
