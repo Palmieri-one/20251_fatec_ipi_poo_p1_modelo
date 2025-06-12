@@ -1,14 +1,22 @@
 package br.fatec;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class JogoMinecraft {
     public static void main(String[] args) throws Exception {
         var dao = new PersonagemDAO();
-        var lista_p1 = dao.listar();
-        var p1 = lista_p1.get(0);
-        var p2 = lista_p1.get(1);
-
+        var lista = new ArrayList<Personagem>();
+        try {
+            lista = dao.listar();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(("Erro ao listar personagens! Tente novamente mais tarde."));
+            return;
+        }
+        var p1 = lista.get(0);
+        var p2 = lista.get(1);
+       
         var gerador = new Random();
         int iteracao = 1;
 
@@ -48,8 +56,13 @@ public class JogoMinecraft {
                         if(!p2.estaVivo()){
                             p1.setVitorias(p1.getVitorias() + 1);
                             p2.setDerrotas(p2.getDerrotas() + 1);
-                            dao.atualizarVitoriasDerrotas(p1.getCodigo(), p1.getVitorias(), p1.getDerrotas());
-                            dao.atualizarVitoriasDerrotas(p2.getCodigo(), p2.getVitorias(), p2.getDerrotas());
+                            try {
+                                dao.atualizarVitoriasDerrotas(p1.getCodigo(), p1.getVitorias(), p1.getDerrotas());
+                                dao.atualizarVitoriasDerrotas(p2.getCodigo(), p2.getVitorias(), p2.getDerrotas());
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                System.out.println("Erro ao atualizar vitórias/derrotas! Tente novamente mais tarde.");
+                            }
                             System.out.println("VITÓRIA DE " + p1.getNome() + "!");
                             System.out.println(p1);
                             System.out.println(p2);
@@ -90,8 +103,13 @@ public class JogoMinecraft {
                             if(!p1.estaVivo()){
                                 p2.setVitorias(p2.getVitorias() + 1);
                                 p1.setDerrotas(p1.getDerrotas() + 1);
-                                dao.atualizarVitoriasDerrotas(p2.getCodigo(), p2.getVitorias(), p2.getDerrotas());
-                                dao.atualizarVitoriasDerrotas(p1.getCodigo(), p1.getVitorias(), p1.getDerrotas());
+                                try {
+                                    dao.atualizarVitoriasDerrotas(p1.getCodigo(), p1.getVitorias(), p1.getDerrotas());
+                                    dao.atualizarVitoriasDerrotas(p2.getCodigo(), p2.getVitorias(), p2.getDerrotas());
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    System.out.println("Erro ao atualizar vitórias/derrotas! Tente novamente mais tarde.");
+                                }
                                 System.out.println("VITÓRIA DE " + p2.getNome() + "!");
                                 System.out.println(p1);
                                 System.out.println(p2);
@@ -109,11 +127,21 @@ public class JogoMinecraft {
                 if(iteracao >= 1){
                     if(p1.estaVivo()){
                          p1.alterarProbabilidades(gerador);
-                         dao.atualizarProbabilidades(p1.getCodigo(), p1.getProb_construir(), p1.getProb_coletar(), p1.getProb_minerar());
+                         try {
+                            dao.atualizarProbabilidades(p1.getCodigo(), p1.getProb_construir(), p1.getProb_coletar(), p1.getProb_minerar());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            System.out.println("Erro ao atualizar probabilidades do " + p1.getNome() + " Tente novamente mais tarde.");
+                        }
                     }
                     if(p2.estaVivo()){
-                         p2.alterarProbabilidades(gerador);
-                         dao.atualizarProbabilidades(p2.getCodigo(), p2.getProb_construir(), p2.getProb_coletar(), p2.getProb_minerar());
+                        p2.alterarProbabilidades(gerador);
+                        try {
+                            dao.atualizarProbabilidades(p2.getCodigo(), p2.getProb_construir(), p2.getProb_coletar(), p2.getProb_minerar());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            System.out.println("Erro ao atualizar probabilidades do " + p2.getNome() + " Tente novamente mais tarde.");
+                        }
                     }
                 }
             iteracao++;      
