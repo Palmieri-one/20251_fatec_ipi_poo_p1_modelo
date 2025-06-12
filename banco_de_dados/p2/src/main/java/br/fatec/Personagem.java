@@ -75,8 +75,8 @@ public boolean estaVivo() {
 
 public void alterarProbabilidades(Random gerador) {
     this.setProb_construir(gerador.nextDouble());
-    this.setProb_coletar(gerador.nextDouble());
-    this.setProb_minerar(gerador.nextDouble());
+    this.setProb_coletar(gerador.nextDouble(1 - prob_construir));
+    this.setProb_minerar(gerador.nextDouble(1 - prob_construir - prob_coletar));
 }
 
 @Override
